@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>financial| management systerm</title>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/fontawesome.min.css" integrity="sha512-SgaqKKxJDQ/tAUAAXzvxZz33rmn7leYDYfBP+YoMRSENhf3zJyx3SBASt/OfeQwBHA1nxMis7mM3EV/oYT6Fdw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <script
+src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+</script>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" 
+    crossorigin="anonymous">
+    
+
+    <link rel="stylesheet" href="systerm.css">
+</head>
+      <body>
+        
+  <!-- Navigation bar -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+    <div class="container">
+      <a class="navbar-brand" href="#">My Finance</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarNav">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link" href="#">Dashboard</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Transactions</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Budgets</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Investments</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main content -->
+  <div class="container mt-3">
+    <div class="row">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Total Income</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Last 30 days</h6>
+            <p class="card-text">Ksh10,000.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Total Expenses</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Last 30 days</h6>
+            <p class="card-text">Ksh5,000.00</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row mt-3">
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Net Worth</h5>
+            <h6 class="card-subtitle mb-2 text-muted">As of today</h6>
+            <p class="card-text">Ksh50,000.00</p>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Investment Performance</h5>
+            <h6 class="card-subtitle mb-2 text-muted">Last 12 months</h6>
+            <canvas id="investment-chart"></canvas>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+        var investmentData = {
+          labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+          datasets: [{
+            label: 'Investment Performance',
+            data: [5000, 6000, 7000, 8000, 9000, 10000, 11000, 12000, 13000, 14000, 15000, 16000],
+            fill: false,
+            borderColor: 'rgb(136, 249, 248)',
+            tension: 0.1
+          }]
+        };
+      
+        var investmentConfig = {
+          type: 'line',
+          data: investmentData,
+          options: {
+            responsive: true,
+            plugins: {
+              legend: {
+                display: false
+              }
+            }
+          },
+        };
+      
+        var investmentChart = new Chart(
+          document.getElementById('investment-chart'),
+          investmentConfig
+        );
+      </script>
+
+
+ <!-- BUGET -->
+ <div class="container">
+  <h1>Budget Planner</h1>
+  <form>
+    <div class="form-group">
+      <label for="income">Income:</label>
+      <input type="number" class="form-control" id="income" placeholder="Enter your income">
+    </div>
+    <div class="form-group">
+      <label for="housing">Housing:</label>
+      <input type="number" class="form-control expense" id="housing" placeholder="Enter your housing expense">
+    </div>
+    <div class="form-group">
+      <label for="transportation">Transportation:</label>
+      <input type="number" class="form-control expense" id="transportation" placeholder="Enter your transportation expense">
+    </div>
+    <div class="form-group">
+      <label for="food">Food:</label>
+      <input type="number" class="form-control expense" id="food" placeholder="Enter your food expense">
+    </div>
+    <div class="form-group">
+      <label for="utilities">Utilities:</label>
+      <input type="number" class="form-control expense" id="utilities" placeholder="Enter your utilities expense">
+    </div>
+    <div class="form-group">
+      <label for="entertainment">Entertainment:</label>
+      <input type="number" class="form-control expense" id="entertainment" placeholder="Enter your entertainment expense">
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  <div id="budget-results"></div>
+  <div id="expense-tracker">
+    <h2>Expense Tracker</h2>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Amount</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="housing">
+          <td>Housing</td>
+          <td>0</td>
+        </tr>
+        <tr class="transportation">
+          <td>Transportation</td>
+          <td>0</td>
+        </tr>
+        <tr class="food">
+          <td>Food</td>
+          <td>0</td>
+        </tr>
+        <tr class="utilities">
+          <td>Utilities</td>
+          <td>0</td>
+        </tr>
+        <tr class="entertainment">
+          <td>Entertainment</td>
+          <td>0</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- JavaScript -->
+<script>
+  var budget = 0;
+  var housing_expense = 0;
+  var transportation_expense = 0;
+  var food_expense = 0;
+  var utilities_expense = 0;
+  var entertainment_expense = 0;
+
+  // Submit form
+  $('form').submit(function(event) {
+    event.preventDefault();
+    // Get income and expenses
+    var income = parseInt($('#income').val());
+    housing_expense = parseInt($('#housing').val());
+    transportation_expense = parseInt($('#transportation').val());
+    food_expense = parseInt($('#food').val());
+    utilities_expense = parseInt($('#utilities').val());
+    entertainment_expense = parseInt($('#entertainment').val());
+    // Calculate budget and update results
+    budget = income - housing_expense - transportation_expense - food_expense - utilities_expense - entertainment_expense;
+    $('#budget-results').html('<h2>Budget Results</h2><p>Income: Ksh' + income + '</p><p>Expenses: Ksh' + (housing_expense + transportation_expense + food_expense + utilities_expense + entertainment_expense) + '</p><p>Budget: Ksh' + budget + '</p>');
+    // Update expense tracker
+    $('.housing td:last').html('Ksh' + housing_expense);
+    $('.transportation td:last').html('Ksh' + transportation_expense);
+    $('.food td:last').html('Ksh' + food_expense);
+    $('.utilities td:last').html('Ksh' + utilities_expense);
+    $('.entertainment td:last').html('Ksh' + entertainment_expense);
+    // Categorize expenses and update budget
+    categorizeExpenses();
+    updateBudget();
+  });
+
+  // Categorize expenses
+  function categorizeExpenses() {
+    $('.expense').each(function() {
+      var expense = parseInt($(this).val());
+      if ($(this).attr('id') === 'housing') {
+        housing_expense += expense;
+      } else if ($(this).attr('id') === 'transportation') {
+        transportation_expense += expense;
+      } else if ($(this).attr('id') === 'food') {
+        food_expense += expense;
+      } else if ($(this).attr('id') === 'utilities') {
+        utilities_expense += expense;
+      } else if ($(this).attr('id') === 'entertainment') {
+        entertainment_expense += expense;
+      }
+    });
+  }
+
+  // Update budget
+  function updateBudget() {
+    var total_expenses = housing_expense + transportation_expense + food_expense + utilities_expense + entertainment_expense;
+    if (total_expenses > budget) {
+      alert('You have exceeded your budget!');
+    }
+  }
+</script>
+
+ <!-- END OF BUGET SECTION  -->
+ <!-- Bill Payments section -->
+<section id="bill-payments">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h2>Pay with PayPal</h2>
+        <form>
+          <div class="form-group">
+            <label for="paypal-email">PayPal Email:</label>
+            <input type="email" class="form-control" id="paypal-email" placeholder="Enter PayPal email">
+          </div>
+          <div class="form-group">
+            <label for="paypal-amount">Amount:</label>
+            <input type="number" class="form-control" id="paypal-amount" placeholder="Enter amount to pay">
+          </div>
+          <button type="submit" class="btn btn-primary">Pay with PayPal</button>
+        </form>
+      </div>
+      <div class="col-md-6">
+        <h2>Pay with M-Pesa</h2>
+        <form>
+          <div class="form-group">
+            <label for="mpesa-phone">M-Pesa Phone Number:</label>
+            <input type="tel" class="form-control" id="mpesa-phone" placeholder="Enter M-Pesa phone number">
+          </div>
+          <div class="form-group">
+            <label for="mpesa-amount">Amount:</label>
+            <input type="number" class="form-control" id="mpesa-amount" placeholder="Enter amount to pay">
+          </div>
+          <button type="submit" class="btn btn-primary">Pay with M-Pesa</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+  <!-- END OF PAYMENTS  -->
+
+<!-- Investment Management section -->
+<section id="investment-management">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Portfolio Tracking</h3>
+        <p>Track your investments with ease using our portfolio tracking tool. Get real-time updates on the performance of your investments and monitor your portfolio's overall growth.</p>
+        <a href="#" class="btn btn-primary">Start Tracking</a>
+      </div>
+      <div class="col-md-6">
+        <h3>Stock Alerts</h3>
+        <p>Set up custom stock alerts to stay informed about price changes and other market developments. Our stock alert system is customizable to fit your investment strategy.</p>
+        <a href="#" class="btn btn-primary">Set Alerts</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Investment Calculator</h3>
+        <p>Calculate the potential returns of your investments using our investment calculator. Our tool takes into account factors such as interest rates, inflation, and taxes to give you accurate projections.</p>
+        <a href="#" class="btn btn-primary">Calculate Returns</a>
+      </div>
+      <div class="col-md-6">
+        <h3>Market News and Analysis</h3>
+        <p>Stay up-to-date with the latest market news and analysis. Our team of experts provides insights and recommendations to help you make informed investment decisions.</p>
+        <a href="#" class="btn btn-primary">Read News</a>
+      </div>
+    </div>
+  </div>
+</section>
+ 
+<!-- END OF SECTION  -->
+
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <h2>Reports</h2>
+      <p>Generate and export customized financial reports for your personal or business needs.</p>
+    </div>
+  </div>
+  
+  <div class="row mt-5">
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Income and Expense Report</h4>
+          <p class="card-text">Generate a report that shows your income and expenses for a specific period of time.</p>
+          <button class="btn btn-primary">Generate Report</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Investment Performance Report</h4>
+          <p class="card-text">Generate a report that shows your investment performance for a specific period of time.</p>
+          <button class="btn btn-primary">Generate Report</button>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title">Tax Statement</h4>
+          <p class="card-text">Generate a tax statement for a specific year.</p>
+          <button class="btn btn-primary">Generate Report</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+  <div class="row mt-5">
+    <div class="col-md-12">
+      <h3>Export Options</h3>
+      <p>Select the format in which you would like to export your reports.</p>
+      <form>
+        <div class="form-group">
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exportFormat" id="pdfFormat" value="pdf" checked>
+            <label class="form-check-label" for="pdfFormat">
+              PDF
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exportFormat" id="csvFormat" value="csv">
+            <label class="form-check-label" for="csvFormat">
+              CSV
+            </label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="exportFormat" id="excelFormat" value="excel">
+            <label class="form-check-label" for="excelFormat">
+              Excel
+            </label>
+          </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Export Report</button>
+      </form>
+    </div>
+  </div>
+</div>
+  <!-- END OF SECTION  -->
+  <section id="customer-support" class="bg-light py-5">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-6">
+          <h3>FAQ</h3>
+          <p>Find answers to commonly asked questions about our platform and services.</p>
+          <div class="accordion" id="faq-accordion">
+            <div class="card">
+              <div class="card-header" id="faq-heading-1">
+                <h5 class="mb-0">
+                  <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#faq-collapse-1" aria-expanded="true" aria-controls="faq-collapse-1">
+                    How do I create an account?
+                  </button>
+                </h5>
+              </div>
+              <div id="faq-collapse-1" class="collapse show" aria-labelledby="faq-heading-1" data-parent="#faq-accordion">
+                <div class="card-body">
+                  To create an account, click on the "Sign Up" button on the top right corner of the page and fill in the required information.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="faq-heading-2">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq-collapse-2" aria-expanded="false" aria-controls="faq-collapse-2">
+                    How do I reset my password?
+                  </button>
+                </h5>
+              </div>
+              <div id="faq-collapse-2" class="collapse" aria-labelledby="faq-heading-2" data-parent="#faq-accordion">
+                <div class="card-body">
+                  To reset your password, click on the "Forgot Password" link on the login page and follow the instructions.
+                </div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="card-header" id="faq-heading-3">
+                <h5 class="mb-0">
+                  <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#faq-collapse-3" aria-expanded="false" aria-controls="faq-collapse-3">
+                    How do I contact customer support?
+                  </button>
+                </h5>
+              </div>
+              <div id="faq-collapse-3" class="collapse" aria-labelledby="faq-heading-3" data-parent="#faq-accordion">
+                <div class="card-body">
+                  You can contact customer support through our live chat or email support. Our support team is available 24/7 to assist you with any questions or concerns.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-6">
+          <h3>Community Forum</h3>
+          <p>Join our community forum to share your experiences and learn from others.</p>
+          <div class="card">
+            <div class="card-header">
+              Featured Topics
+            </div>
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item">How to choose the right investment strategy</li>
+              <li class="list-group-item">Tips for saving money on a tight budget</li>
+              <li class="list-group-item">Real estate investment opportunities</li>
+            </ul>
+            <div class="card-body">
+              <a href="#" class="btn btn-primary">Visit</a>
+
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
+
+<!-- hgfdyftyftyfstfd   -->
+<div class="card">
+  <h2 class="card-header">Customer Support</h2>
+  <div class="card-body">
+    <h3>Frequently Asked Questions</h3>
+    <p>Check out our FAQ section to find answers to common questions.</p>
+    <a href="#" class="btn btn-primary">Visit FAQ</a>
+    
+    <hr>
+    
+    <h3>Live Chat</h3>
+    <p>Need immediate assistance? Chat with one of our support agents.</p>
+    <a href="#" class="btn btn-primary">Start Chat</a>
+    
+    <hr>
+    
+    <h3>Email Support</h3>
+    <p>Send us an email and we'll get back to you as soon as possible.</p>
+    <a href="#" class="btn btn-primary">Email Us</a>
+    
+    <hr>
+    
+    <h3>Community Forum</h3>
+    <p>Join our community forum to connect with other users and share your experiences.</p>
+    <a href="#" class="btn btn-primary">Visit Forum</a>
+  </div>
+</div>
+
+ <!-- END OF SECTION  -->
+ <section id="security" class="bg-light">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h2>Security</h2>
+        <hr class="divider my-4">
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-6">
+        <h3>Our Security Measures</h3>
+        <p>We take the security of your personal and financial information seriously. That's why we use advanced security measures, such as encryption, firewalls, and data backup, to protect your data from unauthorized access and theft.</p>
+        <p>We constantly monitor our systems for any suspicious activity and work with leading security experts to stay ahead of potential threats.</p>
+      </div>
+      <div class="col-md-6">
+        <h3>Your Security Tips</h3>
+        <p>You can also take steps to enhance your online security and privacy, such as:</p>
+        <ul>
+          <li>Using strong passwords and changing them regularly</li>
+          <li>Enabling two-factor authentication</li>
+          <li>Avoiding public Wi-Fi for sensitive transactions</li>
+          <li>Being cautious of phishing emails and scams</li>
+          <li>Keeping your computer and software up-to-date</li>
+        </ul>
+        <p>If you have any concerns about the security of your account or data, please contact our customer support team immediately.</p>
+      </div>
+    </div>
+  </div>
+</section>
+ <!-- FOOTER SECTION  -->
+
+ <footer class="bg-gray text-dark py-5">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-4">
+        <h3>Company Information</h3>
+        <p>Mvita Tudor<br>
+        Mombasa, Kenya 80100<br>
+        Phone: +254769275595<br>
+        Email: info@financialmanagement.com</p>
+      </div>
+      <div class="col-md-4">
+        <h3>Quick Links</h3>
+        <ul class="list-unstyled">
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact Us</a></li>
+        </ul>
+      </div>
+      <div class="col-md-4">
+        <h3>Follow Us</h3>
+        <ul class="list-inline">
+          <li class="list-inline-item"><a href="#"><i class="fa-brands fa-facebook fa-bounce fa-lg" style="color: rgb(255, 0, 0);" ></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fa-brands fa-twitter fa-beat"
+            style="color: rgb(255, 0, 0);"></i></a></li>
+          <li class="list-inline-item"><a href="#"><i class="fa-brands fa-instagram fa-flip"
+            style="color: rgb(255, 0, 0);"></i></a></li>
+        </ul>
+      </div>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-md-6">
+        <p>&copy; KUTUTA. All rights reserved.</p>
+      </div>
+      <div class="col-md-6">
+        <ul class="list-inline float-md-end">
+          <li class="list-inline-item"><a href="#">Privacy Policy</a></li>
+          <li class="list-inline-item"><a href="#">Terms of Use</a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+
+ <!-- LINKS  -->
+ 
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <script src="sysmterm.js"></script>
+</body>
+</html>
